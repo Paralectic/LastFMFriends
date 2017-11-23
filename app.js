@@ -16,6 +16,11 @@ var table = document.createElement("table");
     start();
 	document.getElementById("friendActivity").innerHTML = "";
 	}, 30000);
+
+    var tableHeader = document.createElement("h2");
+    tableHeader.className = "headerText";
+    tableHeader.innerHTML = "Friends are listening to: ";
+    table.appendChild(tableHeader);
 	
 	function start()
 	{
