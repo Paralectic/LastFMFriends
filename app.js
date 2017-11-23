@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 var username = "";
 var token = "";
-
+var table = document.createElement("table"); 
 	chrome.storage.local.get('username', function (result) {
 	username = result.username;
 	});
@@ -22,7 +22,6 @@ var token = "";
 		var Friends = "";
 		var index = 0;
 		var currentUser = "";
-		var table = document.createElement("table"); 
 
 		var xhr = new XMLHttpRequest();
 		xhr.onload = function() {
