@@ -10,28 +10,28 @@ table.appendChild(header);
 
 	var active = document.getElementById("friendActivity");
 	chrome.storage.local.get('username', function (result) {
-	username = result.username;
+		username = result.username;
 	});
 	
 	chrome.storage.local.get('token', function (result) {
-	token = result.token;
-	start();
+		token = result.token;
+		start();
 	}); 
 	
 	
 	setInterval(function(){ 
-	active = document.getElementById("friendActivity");
-	if(active == null || active.length < 1)
-	{
-		start();
-	}
+		active = document.getElementById("friendActivity");
+		if(active == null || active.length < 1)
+		{
+			start();
+		}
 	}, 5000);
 	
 	setInterval(function(){ 
-	if(active != undefined)
-	{    
-		start();
-	}
+		if(active != undefined)
+		{    
+			start();
+		}
 	}, 30000);
 	
 	function start()
@@ -48,11 +48,11 @@ table.appendChild(header);
 			
 			Friends = json;
 		
-				if(active != null)
-				{
-					active.innerHTML = "";
-					table.appendChild(header);
-				}
+			if(active != null)
+			{
+				active.innerHTML = "";
+				table.appendChild(header);
+			}
 			processFriends(0);
 		};
 
