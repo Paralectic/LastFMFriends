@@ -12,6 +12,11 @@ var token = "";
 	start();
 	}); 
 	
+	setInterval(function(){ 
+    start();
+	document.getElementById("friendActivity").innerHTML = "";
+	}, 30000);
+	
 	function start()
 	{
 		var Friends = "";
@@ -65,6 +70,7 @@ var token = "";
 			{
 				var tet = document.getElementById("recent-tracks-section");
 				table.className = "CurrentFriendActivity chartlist-name";
+				table.id = "friendActivity";
 				// document.body.appendChild(table); 
 				var songRow = document.createElement("tr");
 				songRow.className = "js-link-block js-focus-controls-container chartlist-row--even";			
