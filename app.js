@@ -1,10 +1,10 @@
 
-
-var xhr = new XMLHttpRequest();
 var Friends = "";
 var index = 0;
 var currentUser = "";
 var div = document.createElement("div"); 
+
+var xhr = new XMLHttpRequest();
 xhr.onload = function() {
     var json = xhr.responseText;                         // Response
     json = json.replace(/^[^(]*\(([\S\s]+)\);?$/, '$1'); // Turn JSONP in JSON
@@ -15,7 +15,6 @@ xhr.onload = function() {
 	processFriends(0);
 };
 
-// Example:
 var username = localStorage.getItem("username");
 var token = localStorage.getItem("token");
 
@@ -30,13 +29,13 @@ var recentTrack = "";
 
 function processFriends(index)
 {	
-		if(Friends.friends != undefined && index < Friends.friends.user.length)
-		{
-			var requestLink = 'http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=' + Friends.friends.user[index].name + '&api_key=' + token + '&format=json';
-			currentUser = Friends.friends.user[index].name;
-			recentTrackRequest.open('GET', requestLink);
-			recentTrackRequest.send();
-		}
+	if(Friends.friends != undefined && index < Friends.friends.user.length)
+	{
+		var requestLink = 'http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=' + Friends.friends.user[index].name + '&api_key=' + token + '&format=json';
+		currentUser = Friends.friends.user[index].name;
+		recentTrackRequest.open('GET', requestLink);
+		recentTrackRequest.send();
+	}
 }
 
 
@@ -47,10 +46,9 @@ recentTrackRequest.onload = function()
 	json = JSON.parse(json);                             // Parse JSON
 	
 	recentTrack = json;
+	
 	if(isEmpty(recentTrack.recenttracks.track[0]['@attr']) === false)
-	{
 		var currentSong = currentUser + ": " + recentTrack.recenttracks.track[0].artist['#text'] + " - " + recentTrack.recenttracks.track[0].name;
-	}
 	
 	if(currentSong != undefined)
 	{
@@ -67,34 +65,33 @@ recentTrackRequest.onload = function()
 	
 	processFriends(index);
 }
-	
+// Check if a JSON object is empty
 function isEmpty(obj) {
     for(var prop in obj) {
         if(obj.hasOwnProperty(prop))
             return false;
     }
-
     return true;
 }
 
 document.addEventListener('DOMContentLoaded', function() {
     var link = document.getElementById('credentials');
-    // onClick's logic below:
     link.addEventListener('click', function() {
 				alert("Credentials saved!");
+	
+	// Get entered username from the form by it's ID and save it
 	var newusername = document.getElementById("username").value;
-	//Save it to the localStorage variable which will always remember what you store in it
 	localStorage.setItem('username', newusername)
 	
+	// Get entered token from the form by it's ID and save it
 	var newtoken = document.getElementById("token").value;
-	//Save it to the localStorage variable which will always remember what you store in it
 	localStorage.setItem('token', newtoken)
     });
 });
 
 document.addEventListener('DOMContentLoaded', function() {
+	// if the user clicks to get the crendtials, retrieve them from localStorage and append them to the forms
 	 var link = document.getElementById('getcredentials');
-    // onClick's logic below:
     link.addEventListener('click', function() {
 		getcredentials.style.display='none';
 		var usernamefield = document.getElementById("username");
