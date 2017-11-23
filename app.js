@@ -17,7 +17,7 @@ var token = "";
 		var Friends = "";
 		var index = 0;
 		var currentUser = "";
-		var div = document.createElement("div"); 
+		var table = document.createElement("table"); 
 
 		var xhr = new XMLHttpRequest();
 		xhr.onload = function() {
@@ -61,14 +61,17 @@ var token = "";
 			
 			if(currentSong != undefined)
 			{
-				div.className = "CurrentFriendActivity";
-					document.body.appendChild(div); 
-				var songRow = document.createElement("span");
-				songRow.className = "songRow";
-				songRow.innerHTML = currentSong;
-				div.appendChild(songRow);
-				var x = document.createElement("BR");
-				div.appendChild(x);
+				var tet = document.getElementById("recent-tracks-section");
+				table.className = "CurrentFriendActivity chartlist-name";
+				// document.body.appendChild(table); 
+				var songRow = document.createElement("tr");
+				var songRowItem = document.createElement("td");
+				songRowItem.className = "songRow chartlist-ellipsis-wrap";
+				songRowItem.innerHTML = currentSong;
+				songRow.appendChild(songRowItem);
+				table.appendChild(songRow);
+				
+				tet.appendChild(table);
 			}
 			index++;
 			

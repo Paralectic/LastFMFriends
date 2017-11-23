@@ -1,19 +1,19 @@
 .CurrentFriendActivity {
-    position: fixed;
+    position: relative;
     top: 0;
-    width: 45%;
+    width: 100%;
     height: auto;
     z-index: 32423942323;
     line-height: 24px;
 }
 
 .songRow {
-    padding: 5px;
+    padding: 6px 0px 6px 10px !important;
     color: #222;
     background-color: #fffcca;
     font-family: Open Sans, Lucida Grande, Helvetica Neue, Helvetica, Arial, Sans-serif;
     line-height: 1.71428571;
-    height: 60px;
+    height: 20px;
     width: 400px;
     list-style-type: none;
 }
