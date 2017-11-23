@@ -3,6 +3,12 @@ document.addEventListener('DOMContentLoaded', function() {
 var username = "";
 var token = "";
 var table = document.createElement("table"); 
+var header = document.createElement("h2");
+header.className = "friendsHeader text-colour-link";
+header.innerHTML = "Friend Activity";
+table.appendChild(header);
+
+	var active = document.getElementById("friendActivity");
 	chrome.storage.local.get('username', function (result) {
 	username = result.username;
 	});
@@ -12,13 +18,24 @@ var table = document.createElement("table");
 	start();
 	}); 
 	
+	
 	setInterval(function(){ 
-    start();
-	document.getElementById("friendActivity").innerHTML = "";
+	active = document.getElementById("friendActivity");
+	if(active == null || active.length < 1)
+	{
+		start();
+	}
+	}, 5000);
+	
+	setInterval(function(){ 
+	if(active != undefined)
+	{    
+		start();
+	}
 	}, 30000);
 	
 	function start()
-	{
+	{		
 		var Friends = "";
 		var index = 0;
 		var currentUser = "";
@@ -30,7 +47,12 @@ var table = document.createElement("table");
 			json = JSON.parse(json);                             // Parse JSON
 			
 			Friends = json;
-			
+		
+				if(active != null)
+				{
+					active.innerHTML = "";
+					table.appendChild(header);
+				}
 			processFriends(0);
 		};
 
