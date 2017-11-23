@@ -9,7 +9,6 @@ var token = "";
 	
 	chrome.storage.local.get('token', function (result) {
 	token = result.token;
-	alert(token);
 	start();
 	}); 
 	
