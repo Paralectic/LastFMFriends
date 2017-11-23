@@ -57,7 +57,7 @@ var token = "";
 			recentTrack = json;
 			
 			if(isEmpty(recentTrack.recenttracks.track[0]['@attr']) === false)
-				var currentSong = currentUser + ": " + recentTrack.recenttracks.track[0].artist['#text'] + " - " + recentTrack.recenttracks.track[0].name;
+				var currentSong = "<a href='https://www.last.fm/user/" + currentUser + "'>" + currentUser + "</a> " + recentTrack.recenttracks.track[0].artist['#text'] + " - " + recentTrack.recenttracks.track[0].name;
 			
 			if(currentSong != undefined)
 			{
