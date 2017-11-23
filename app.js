@@ -5,12 +5,10 @@ var token = "";
 
 	chrome.storage.local.get('username', function (result) {
 	username = result.username;
-	alert(username);
 	});
 	
 	chrome.storage.local.get('token', function (result) {
 	token = result.token;
-	alert(token);
 	start();
 	}); 
 	
@@ -109,5 +107,4 @@ var token = "";
 		var newtoken = document.getElementById("token").value; 
 		chrome.storage.local.set({'token': newtoken}, function (result) {
 		});
-	});
 });
