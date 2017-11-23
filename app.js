@@ -9,6 +9,7 @@ var token = "";
 	
 	chrome.storage.local.get('token', function (result) {
 	token = result.token;
+	alert(token);
 	start();
 	}); 
 	
@@ -98,13 +99,13 @@ var token = "";
 	var link = document.getElementById('credentials');
 	link.addEventListener('click', function() {		
 		// Get entered username from the form by it's ID and save it
-		var newusername = document.getElementById("username").value;
-		chrome.storage.local.set({'username': newusername}, function (result) {
+			var newusername = document.getElementById("username").value;
+			chrome.storage.local.set({'username': newusername}, function (result) {
 			});
-		});
 		
-		// Get entered token from the form by it's ID and save it
-		var newtoken = document.getElementById("token").value; 
-		chrome.storage.local.set({'token': newtoken}, function (result) {
+			// Get entered token from the form by it's ID and save it
+			var newtoken = document.getElementById("token").value; 
+			chrome.storage.local.set({'token': newtoken}, function (result) {
+			});
 		});
 });
