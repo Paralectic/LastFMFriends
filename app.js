@@ -65,6 +65,7 @@ var token = "";
 				table.className = "CurrentFriendActivity chartlist-name";
 				// document.body.appendChild(table); 
 				var songRow = document.createElement("tr");
+				songRow.className = "js-link-block js-focus-controls-container chartlist-row--even";			
 				var songRowItem = document.createElement("td");
 				songRowItem.className = "songRow chartlist-ellipsis-wrap";
 				songRowItem.innerHTML = currentSong;
