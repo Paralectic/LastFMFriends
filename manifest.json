@@ -1,12 +1,13 @@
 {
   "manifest_version": 2,
+ 
   "name": "LastFM Friends",
   "version": "0.1.0",
   "description": "Shows tracks of friends",
-  "browser_action": {
-    "default_popup": "menu.html"
+ 
+ "browser_action": {
+   "default_popup": "menu.html"
   },
-<<<<<<< HEAD
  
  	 "permissions": [
 	  "http://ws.audioscrobbler.com/*",
@@ -20,23 +21,4 @@
 	"run_at": "document_start"
   }]
  
-=======
-  "content_scripts": [
-    {
-      "css": [
-        "style.css"
-      ],
-      "js": [
-        "app.js"
-      ],
-      "matches": [
-        "https://www.last.fm/user/*"
-      ]
-    }
-  ],
-  "permissions": [
-    "http://ws.audioscrobbler.com/*",
-    "storage"
-  ]
->>>>>>> 7fae4f0231c6c94d2348ac1f41f825d2702b6d80
 }
