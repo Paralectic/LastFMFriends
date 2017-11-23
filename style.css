@@ -1,4 +1,5 @@
-.CurrentFriendActivity {
+.CurrentFriendActivity 
+{
     position: relative;
     top: 0;
     width: 100%;
@@ -7,7 +8,8 @@
     line-height: 24px;
 }
 
-.songRow {
+.songRow
+ {
     padding: 6px 0px 6px 10px !important;
     color: #222;
     background-color: #fffcca;
@@ -16,4 +18,9 @@
     height: 20px;
     width: 400px;
     list-style-type: none;
+}
+
+.artistname, .trackname
+{
+  color: #222;
 }
