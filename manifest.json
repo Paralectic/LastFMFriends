@@ -9,14 +9,16 @@
    "default_popup": "menu.html"
   },
  
-  "content_scripts": [{
-    "css": ["style.css"],
-    "js": ["app.js"],
-    "matches": ["https://www.last.fm/user/*"]
-  }],
- 
-	 "permissions": [
+ 	 "permissions": [
 	  "http://ws.audioscrobbler.com/*",
 	  "storage"
-	]
+	],
+ 
+    "content_scripts": [{
+    "css": ["style.css"],
+    "matches": ["https://www.last.fm/user/*"],
+	"js": ["app.js"],
+	"run_at": "document_start"
+  }]
+ 
 }
