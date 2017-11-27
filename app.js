@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-var username = "";
-var token = "";
-var table = document.createElement("table"); 
-var header = document.createElement("h2");
-header.className = "friends-header text-colour-link";
-header.innerHTML = "Friend Activity";
-table.appendChild(header);
+	var username = "";
+	var token = "";
+	var table = document.createElement("table"); 
+	var header = document.createElement("h2");
+	header.className = "friends-header text-colour-link";
+	header.innerHTML = "Friend Activity";
+	table.appendChild(header);
 
 	var active = document.getElementById("friendActivity");
 	chrome.storage.local.get('username', function (result) {
@@ -17,7 +17,6 @@ table.appendChild(header);
 		token = result.token;
 		start();
 	}); 
-	
 	
 	setInterval(function(){ 
 		active = document.getElementById("friendActivity");
@@ -73,19 +72,24 @@ table.appendChild(header);
 			}
 		}
 
-
 		recentTrackRequest.onload = function()
 		{
 			var json = recentTrackRequest.responseText;                         // Response
 			json = json.replace(/^[^(]*\(([\S\s]+)\);?$/, '$1'); // Turn JSONP in JSON
 			json = JSON.parse(json);                             // Parse JSON
 			
-			recentTrack = json;
+			recentTrackJson = json;
+
+			var recentTrack = recentTrackJson.recenttracks.track;
 			
-			if(isEmpty(recentTrack.recenttracks.track[0]['@attr']) === false)
-				var currentSong = "<a href='https://www.last.fm/user/" + currentUser + "'>" + currentUser + "</a> " + "<a class='artist-name' href='https://www.last.fm/music/" +  recentTrack.recenttracks.track[0].artist['#text'] + "'>" +
-			recentTrack.recenttracks.track[0].artist['#text'] + "</a> - " + 
-			"<a class='track-name' href='https://www.last.fm/music/" +  recentTrack.recenttracks.track[0].artist['#text'] + "/_/" + recentTrack.recenttracks.track[0].name + "'>" +  recentTrack.recenttracks.track[0].name + "</a>"
+			if(isEmpty(recentTest[0]['@attr']) === false)
+				var currentSong = "<a href='https://www.last.fm/user/" + currentUser + "'>" +
+								  currentUser + "</a> " + "<a class='artist-name' href='https://www.last.fm/music/" +  
+								  recentTrack[0].artist['#text'] + "'>" +
+								  recentTrack[0].artist['#text'] + "</a> - " + 
+								  "<a class='track-name' href='https://www.last.fm/music/" +  
+								  recentTrack[0].artist['#text'] + "/_/" + recentTrack[0].name + "'>" +  
+								  recentTrack[0].name + "</a>"
 			
 			if(currentSong != undefined)
 			{
@@ -117,7 +121,6 @@ table.appendChild(header);
 		}
 	}
 
-	
 	var link = document.getElementById('getcredentials');
 	link.addEventListener('click', function() {
 		getcredentials.style.display='none';
@@ -131,13 +134,13 @@ table.appendChild(header);
 	var link = document.getElementById('credentials');
 	link.addEventListener('click', function() {		
 		// Get entered username from the form by it's ID and save it
-			var newusername = document.getElementById("username").value;
-			chrome.storage.local.set({'username': newusername}, function (result) {
-			});
-		
-			// Get entered token from the form by it's ID and save it
-			var newtoken = document.getElementById("token").value; 
-			chrome.storage.local.set({'token': newtoken}, function (result) {
-			});
+		var newusername = document.getElementById("username").value;
+		chrome.storage.local.set({'username': newusername}, function (result) {
 		});
+	
+		// Get entered token from the form by it's ID and save it
+		var newtoken = document.getElementById("token").value; 
+		chrome.storage.local.set({'token': newtoken}, function (result) {
+		});
+	});
 });
