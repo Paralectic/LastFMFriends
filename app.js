@@ -4,7 +4,7 @@ var username = "";
 var token = "";
 var table = document.createElement("table"); 
 var header = document.createElement("h2");
-header.className = "friendsHeader text-colour-link";
+header.className = "friends-header text-colour-link";
 header.innerHTML = "Friend Activity";
 table.appendChild(header);
 
@@ -83,20 +83,20 @@ table.appendChild(header);
 			recentTrack = json;
 			
 			if(isEmpty(recentTrack.recenttracks.track[0]['@attr']) === false)
-				var currentSong = "<a href='https://www.last.fm/user/" + currentUser + "'>" + currentUser + "</a> " + "<a class='artistname' href='https://www.last.fm/music/" +  recentTrack.recenttracks.track[0].artist['#text'] + "'>" +
+				var currentSong = "<a href='https://www.last.fm/user/" + currentUser + "'>" + currentUser + "</a> " + "<a class='artist-name' href='https://www.last.fm/music/" +  recentTrack.recenttracks.track[0].artist['#text'] + "'>" +
 			recentTrack.recenttracks.track[0].artist['#text'] + "</a> - " + 
-			"<a class='trackname' href='https://www.last.fm/music/" +  recentTrack.recenttracks.track[0].artist['#text'] + "/_/" + recentTrack.recenttracks.track[0].name + "'>" +  recentTrack.recenttracks.track[0].name + "</a>"
+			"<a class='track-name' href='https://www.last.fm/music/" +  recentTrack.recenttracks.track[0].artist['#text'] + "/_/" + recentTrack.recenttracks.track[0].name + "'>" +  recentTrack.recenttracks.track[0].name + "</a>"
 			
 			if(currentSong != undefined)
 			{
 				var tet = document.getElementById("recent-tracks-section");
-				table.className = "CurrentFriendActivity chartlist-name";
+				table.className = "current-friend-activity  chartlist-name";
 				table.id = "friendActivity";
 				// document.body.appendChild(table); 
 				var songRow = document.createElement("tr");
 				songRow.className = "js-link-block js-focus-controls-container chartlist-row--even";			
 				var songRowItem = document.createElement("td");
-				songRowItem.className = "songRow chartlist-ellipsis-wrap";
+				songRowItem.className = "song-row chartlist-ellipsis-wrap";
 				songRowItem.innerHTML = currentSong;
 				songRow.appendChild(songRowItem);
 				table.appendChild(songRow);

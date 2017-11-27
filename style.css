@@ -1,4 +1,4 @@
-.CurrentFriendActivity 
+.current-friend-activity 
 {
     position: relative;
     top: 0;
@@ -7,7 +7,7 @@
     line-height: 24px;
 }
 
-.songRow
+.song-row
  {
     padding: 6px 0px 6px 10px !important;
     color: #222;
@@ -19,12 +19,12 @@
     list-style-type: none;
 }
 
-.artistname, .trackname
+.artist-name, .track-name
 {
   color: #222;
 }
 
-.friendsHeader
+.friends-header
 {
 	padding-top: 20px;
 	padding-bottom: 23px;
