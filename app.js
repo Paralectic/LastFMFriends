@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 			var recentTrack = recentTrackJson.recenttracks.track;
 			
-			if(isEmpty(recentTest[0]['@attr']) === false)
+			if(isEmpty(recentTrack[0]['@attr']) === false)
 				var currentSong = "<a href='https://www.last.fm/user/" + currentUser + "'>" +
 								  currentUser + "</a> " + "<a class='artist-name' href='https://www.last.fm/music/" +  
 								  recentTrack[0].artist['#text'] + "'>" +
