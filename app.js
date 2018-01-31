@@ -76,6 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		recentTrackRequest.onload = function()
 		{
+			table.style.display = 'none';
 			var json = recentTrackRequest.responseText;                         // Response
 			json = json.replace(/^[^(]*\(([\S\s]+)\);?$/, '$1'); // Turn JSONP in JSON
 			json = JSON.parse(json);                             // Parse JSON
@@ -105,9 +106,14 @@ document.addEventListener('DOMContentLoaded', function() {
 				songRowItem.className = "song-row chartlist-ellipsis-wrap";
 				songRowItem.innerHTML = currentSong;
 				songRow.appendChild(songRowItem);
-				table.appendChild(songRow);
 				
-				tet.appendChild(table);
+				table.appendChild(songRow);
+				friendsAdded.push(Friends.friends.user[index].name);
+				
+				if(tet != null)
+				{				
+					tet.appendChild(table);
+				}
 			}
 			index++;
 			
