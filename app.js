@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	table.appendChild(header);
 
 	var active = document.getElementById("friendActivity");
+	table.style.display = 'none';
 	chrome.storage.local.get('username', function (result) {
 		username = result.username;
 	});
@@ -38,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		var Friends = "";
 		var index = 0;
 		var currentUser = "";
-
+		var friendsAdded = [];
 		var xhr = new XMLHttpRequest();
 		xhr.onload = function() {
 			var json = xhr.responseText;                         // Response
@@ -63,12 +64,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		function processFriends(index)
 		{	
-			if(Friends.friends != undefined && index < Friends.friends.user.length)
+			if(Friends.friends != undefined && index < Friends.friends.user.length && !arrayContains(Friends.friends.user[index].name, friendsAdded))
 			{
 				var requestLink = 'http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=' + Friends.friends.user[index].name + '&api_key=' + token + '&format=json';
 				currentUser = Friends.friends.user[index].name;
 				recentTrackRequest.open('GET', requestLink);
 				recentTrackRequest.send();
+				friendsAdded.push(Friends.friends.user[index].name);      
 			}
 		}
 
@@ -110,6 +112,11 @@ document.addEventListener('DOMContentLoaded', function() {
 			index++;
 			
 			processFriends(index);
+			
+			if(Friends.friends != undefined && index >= Friends.friends.user.length)
+			{
+				table.style.display = '';
+			}
 		}
 		// Check if a JSON object is empty
 		function isEmpty(obj) {
@@ -143,4 +150,9 @@ document.addEventListener('DOMContentLoaded', function() {
 		chrome.storage.local.set({'token': newtoken}, function (result) {
 		});
 	});
+	
+	function arrayContains(needle, arrhaystack)
+	{
+		return (arrhaystack.indexOf(needle) > -1);
+	}
 });
