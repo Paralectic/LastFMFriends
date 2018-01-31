@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		{    
 			start();
 		}
-	}, 30000);
+	}, 60000);
 	
 	function start()
 	{		
